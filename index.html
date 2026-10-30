@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Global Gigs - Discover digital services from talented freelancers worldwide.">
+<title>Global Gigs | Digital Services Marketplace</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--purple:#7139a5;--dark:#20152f;--gold:#e9bd65;--light:#f8f6fb}
+body{font-family:Arial,sans-serif;background:var(--light);color:var(--dark);line-height:1.6}
+header{background:white;padding:16px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #0000000c;position:sticky;top:0;z-index:10}
+.logo{font-size:25px;font-weight:800;color:var(--purple)}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:20px;align-items:center}
+nav a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px}
+.btn{background:var(--purple);color:white;border:0;padding:11px 18px;border-radius:9px;font-weight:bold;cursor:pointer}
+.hero{padding:65px 6%;text-align:center;background:linear-gradient(135deg,#291640,#7139a5);color:white}
+.hero h1{font-size:clamp(30px,6vw,49px);line-height:1.2;margin-bottom:15px}
+.hero p{color:#eee;font-size:17px;margin-bottom:25px}
+.search{max-width:580px;margin:auto;display:flex;background:white;padding:6px;border-radius:12px;gap:5px}
+.search input{flex:1;min-width:0;border:0;outline:0;padding:12px;font-size:15px}
+.search button{background:var(--gold);color:#281b32;border:0;border-radius:8px;padding:12px 20px;font-weight:bold}
+.stats{display:flex;justify-content:center;gap:35px;margin-top:25px;font-size:13px;color:#eee;flex-wrap:wrap}
+section{padding:45px 6%}
+.section-title{text-align:center;font-size:28px;margin-bottom:8px}
+.sub{text-align:center;color:#777;margin-bottom:28px}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:13px}
+.category{background:white;border:1px solid #eee;border-radius:13px;padding:19px 8px;text-align:center;cursor:pointer;font-weight:bold}
+.category:hover,.category.active{border-color:var(--purple);background:#f0e8f8;color:var(--purple)}
+.category b{display:block;font-size:27px;margin-bottom:5px}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;border:1px solid #eee;border-radius:14px;overflow:hidden;box-shadow:0 4px 15px #00000008}
+.card-art{height:130px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#eee3fa,#f8e9c9)}
+.card-content{padding:17px}
+.tag{font-size:11px;color:var(--purple);font-weight:bold;text-transform:uppercase}
+.card h3{font-size:17px;margin:7px 0}
+.card p{font-size:13px;color:#777}
+.card-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:16px;border-top:1px solid #eee;padding-top:12px}
+.price{font-weight:bold;color:var(--purple)}
+.seller{padding:38px 6%;background:#eee7f5;text-align:center}
+.seller h2{font-size:27px;margin-bottom:8px}
+.seller p{color:#62566d;margin-bottom:18px}
+footer{background:#21152f;color:white;padding:35px 6%;text-align:center}
+footer p{font-size:13px;color:#c9bfd2;margin:8px}
+.empty{text-align:center;color:#777;grid-column:1/-1;padding:30px}
+.hidden{display:none}
+@media(max-width:600px){
+header{padding:13px 4%}
+.logo{font-size:21px}
+nav{gap:10px}
+nav a{font-size:12px}
+nav .btn{padding:9px;font-size:12px}
+.hero{padding:52px 5%}
+section{padding:35px 5%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">GLOBAL <span>GIGS</span></div>
+  <nav>
+    <a href="#categories">Categories</a>
+    <a href="#services">Services</a>
+    <a href="#sell">Sell Services</a>
+    <button class="btn" onclick="showInfo('Login and registration will be added in the next version.')">Join Us</button>
+  </nav>
+</header>
+
+<main>
+<div class="hero">
+  <h1>Find the Right Talent.<br>Make Great Things Happen.</h1>
+  <p>Discover digital services from talented people around the world.</p>
+  <div class="search">
+    <input id="searchInput" type="search" placeholder="What service are you looking for?">
+    <button onclick="filterServices()">Search</button>
+  </div>
+  <div class="stats">
+    <span>🌍 Global Community</span>
+    <span>💡 Digital Skills</span>
+    <span>🤝 New Opportunities</span>
+  </div>
+</div>
+
+<section id="categories">
+  <h2 class="section-title">Explore Categories</h2>
+  <p class="sub">Find the digital service you need</p>
+  <div class="categories">
+    <button class="category active" data-cat="all"><b>🌐</b>All Services</button>
+    <button class="category" data-cat="design"><b>🎨</b>Graphic Design</button>
+    <button class="category" data-cat="web"><b>💻</b>Web Development</button>
+    <button class="category" data-cat="video"><b>🎬</b>Video Editing</button>
+    <button class="category" data-cat="writing"><b>✍️</b>Translation</button>
+    <button class="category" data-cat="marketing"><b>📈</b>Marketing</button>
+    <button class="category" data-cat="teaching"><b>📚</b>Online Teaching</button>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="section-title">Popular Services</h2>
+  <p class="sub">Explore sample services on Global Gigs</p>
+  <div class="services" id="serviceGrid">
+
+    <article class="card" data-cat="design">
+      <div class="card-art">🎨</div>
+      <div class="card-content">
+        <span class="tag">Graphic Design</span>
+        <h3>Professional Logo Design</h3>
+        <p>Creative and memorable logo concepts for your brand.</p>
+        <div class="card-bottom"><span>⭐ New Seller</span><span class="price">From $10</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="web">
+      <div class="card-art">💻</div>
+      <div class="card-content">
+        <span class="tag">Web Development</span>
+        <h3>Modern Website Design</h3>
+        <p>Responsive websites for businesses and creators.</p>
+        <div class="card-bottom"><span>⭐ New Seller</span><span class="price">From $30</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="video">
+      <div class="card-art">🎬</div>
+      <div class="card-content">
+        <span class="tag">Video Editing</span>
+        <h3>Professional Video Editing</h3>
+        <p>Engaging videos for social media and business.</p>
+        <div class="card-bottom"><span>⭐ New Seller</span><span class="price">From $15</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="writing">
+      <div class="card-art">🌍</div>
+      <div class="card-content">
+        <span class="tag">Translation</span>
+        <h3>Document Translation</h3>
+        <p>Translation services for multiple languages.</p>
+        <div class="card-bottom"><span>⭐ New Seller</span><span class="price">From $10</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="marketing">
+      <div class="card-art">📈</div>
+      <div class="card-content">
+        <span class="tag">Digital Marketing</span>
+        <h3>Social Media Promotion</h3>
+        <p>Marketing ideas to grow your online presence.</p>
+        <div class="card-bottom"><span>⭐ New Seller</span><span class="price">From $20</span></div>
+      </div>
+    </article>
+
+    <article class="card" data-cat="teaching">
+      <div class="card-art">📚</div>
+      <div class="card-content">
+        <span class="tag">Online Teaching</span>
+        <h3>Personal Online Tutoring</h3>
+        <p>Learn skills with individual online sessions.</p>
+        <div class="card-bottom"><span>⭐ New Seller</span><span class="price">From $12</span></div>
+      </div>
+    </article>
+  </div>
+  <p id="noResults" class="empty hidden">No matching services found. Try another search.</p>
+</section>
+
+<div class="seller" id="sell">
+  <h2>Have a Skill? Start Selling!</h2>
+  <p>Showcase your talent and connect with customers around the world.</p>
+  <button class="btn" onclick="showInfo('Seller registration will be enabled in a future version.')">Become a Seller</button>
+</div>
+</main>
+
+<footer>
+  <div class="logo" style="color:white">GLOBAL <span>GIGS</span></div>
+  <p>A global marketplace for digital services.</p>
+  <p>Demo Version · More features coming soon</p>
+  <p>© 2026 Global Gigs. All rights reserved.</p>
+</footer>
+
+<script>
+const cards=[...document.querySelectorAll('.card')];
+const categories=[...document.querySelectorAll('.category')];
+let activeCategory='all';
+
+function filterServices(){
+ const q=document.getElementById('searchInput').value.toLowerCase().trim();
+ let count=0;
+ cards.forEach(card=>{
+  const matchesCategory=activeCategory==='all'||card.dataset.cat===activeCategory;
+  const matchesText=card.innerText.toLowerCase().includes(q);
+  card.classList.toggle('hidden',!(matchesCategory&&matchesText));
+  if(matchesCategory&&matchesText)count++;
+ });
+ document.getElementById('noResults').classList.toggle('hidden',count!==0);
+}
+categories.forEach(button=>{
+ button.addEventListener('click',()=>{
+  activeCategory=button.dataset.cat;
+  categories.forEach(b=>b.classList.toggle('active',b===button));
+  filterServices();
+ });
+});
+document.getElementById('searchInput').addEventListener('input',filterServices);
+function showInfo(message){alert(message);}
+</script>
+</body>
+</html>
